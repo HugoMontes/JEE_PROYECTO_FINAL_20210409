@@ -142,4 +142,34 @@ public class UsuarioDaoImpl implements UsuarioDao {
         conexion.close();
         return usuario;
     }
+
+    @Override
+    public Usuario findByUsernameAndPassword(String username, String password) {
+        Usuario usuario = null;
+        try {
+            conexion = new Conexion();
+            String sql = "select id, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, username, email, status, created_at from usuario where status=1 and UPPER(username)=? and password=?";
+            PreparedStatement st = conexion.getConnection().prepareStatement(sql);
+            st.setString(1, username);
+            st.setString(2, password);
+            LOGGER.info(st.toString());
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setApellidoPaterno(rs.getString("apellido_paterno"));
+                usuario.setApellidoMaterno(rs.getString("apellido_materno"));
+                usuario.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                usuario.setUsername(rs.getString("username"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setStatus(rs.getInt("status"));
+                usuario.setCreatedAt(rs.getDate("created_at"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        conexion.close();
+        return usuario;
+    }
 }

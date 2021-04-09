@@ -9,4 +9,5 @@ public interface UsuarioDao {
     public void delete(int id);
     public List<Usuario> findAll();
     public Usuario findById(int id);
+    public Usuario findByUsernameAndPassword(String username, String password);
 }

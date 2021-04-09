@@ -1,4 +1,3 @@
-
 package com.educomser.bo;
 
 import com.educomser.bean.Usuario;
@@ -12,4 +11,5 @@ public interface UsuarioBo {
     public void eliminar(int id);
     public List<Usuario> listarUsuarios();
     public Usuario buscarPorId(int id);
+    public Usuario buscarUsuarioLogeado(String username, String password);
 }
