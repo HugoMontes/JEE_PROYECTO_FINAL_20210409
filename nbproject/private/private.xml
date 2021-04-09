@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="JEE_PROYECTS">
+            <file>file:/D:/proyectos-java/JEE_PROYECTO_FINAL/web/usuario/listar.jsp</file>
+            <file>file:/D:/proyectos-java/JEE_PROYECTO_FINAL/src/java/com/educomser/controller/usuario/UsuarioEliminarServlet.java</file>
+            <file>file:/D:/proyectos-java/JEE_PROYECTO_FINAL/src/java/com/educomser/controller/usuario/UsuarioNuevoServlet.java</file>
+        </group>
+        <group name="COFAR">
+            <file>file:/F:/PROYECTOS_PRUEBAS/java/JEE_PROYECTO_FINAL/src/java/com/educomser/controller/usuario/UsuarioNuevoServlet.java</file>
+            <file>file:/F:/PROYECTOS_PRUEBAS/java/JEE_PROYECTO_FINAL/web/usuario/editar.jsp</file>
+            <file>file:/F:/PROYECTOS_PRUEBAS/java/JEE_PROYECTO_FINAL/src/java/com/educomser/controller/usuario/UsuarioEditarServlet.java</file>
+        </group>
+    </open-files>
+</project-private>
