@@ -11,13 +11,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class UsuarioDaoImpl implements UsuarioDao {
 
     private Conexion conexion;
-
+    private static final Logger LOGGER = LogManager.getLogger(UsuarioDaoImpl.class);
+    
     @Override
     public void save(Usuario usuario) {
         try {
@@ -32,7 +33,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
             st.setString(6, MD5.getMd5(usuario.getPassword()));
             st.setString(7, usuario.getEmail());
             st.setInt(8, usuario.getStatus());
-            Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            // Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            LOGGER.info(st.toString());
             st.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -55,7 +57,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
             st.setInt(7, usuario.getStatus());
             st.setTimestamp(8, new java.sql.Timestamp(new Date().getTime()));
             st.setLong(9, usuario.getId());
-            Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            // Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            LOGGER.info(st.toString());
             st.executeUpdate();;
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -70,7 +73,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
             String sql = "DELETE FROM usuario WHERE id=?";
             PreparedStatement st = conexion.getConnection().prepareStatement(sql);
             st.setInt(1, id);
-            Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            // Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            LOGGER.info(st.toString());
             st.executeUpdate();
             st.close();
         } catch (SQLException ex) {
@@ -85,7 +89,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
         try {
             conexion = new Conexion();
             String sql = "select id, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, username, email, status, created_at from usuario;";
-            Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", sql);
+            // Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", sql);
+            LOGGER.info(sql);
             Statement st = conexion.getConnection().createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
@@ -116,7 +121,8 @@ public class UsuarioDaoImpl implements UsuarioDao {
             String sql = "select id, nombre, apellido_paterno, apellido_materno, fecha_nacimiento, username, email, status, created_at from usuario where id=?";
             PreparedStatement st = conexion.getConnection().prepareStatement(sql);
             st.setInt(1, id);
-            Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            // Logger.getLogger(getClass().getName()).log(Level.INFO, getClass().getName() + " | {0}", st.toString());
+            LOGGER.info(st.toString());
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 usuario = new Usuario();
